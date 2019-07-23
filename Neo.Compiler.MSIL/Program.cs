@@ -100,8 +100,9 @@ namespace Neo.Compiler
             }
             byte[] bytes;
             bool bSucc;
-            string jsonstr = null;
+            string abijsonstr = null;
             string debugstr = null;
+            string mdjsonstr = null;
             //convert and build
             try
             {
@@ -130,10 +131,23 @@ namespace Neo.Compiler
 
                 try
                 {
+                    var outjson = MetadataExport.Export(mod);
+                    StringBuilder sb = new StringBuilder();
+                    outjson.ConvertToStringWithFormat(sb, 0);
+                    mdjsonstr = sb.ToString();
+                    log.Log("gen md succ");
+                }
+                catch (Exception err)
+                {
+                    log.Log("gen md Error:" + err.ToString());
+                }
+
+                try
+                {
                     var outjson = vmtool.FuncExport.Export(am, bytes);
                     StringBuilder sb = new StringBuilder();
                     outjson.ConvertToStringWithFormat(sb, 0);
-                    jsonstr = sb.ToString();
+                    abijsonstr = sb.ToString();
                     log.Log("gen abi succ");
                 }
                 catch (Exception err)
@@ -180,10 +194,25 @@ namespace Neo.Compiler
 
             try
             {
+                string mdname = onlyname + ".md.json";
+
+                System.IO.File.Delete(mdname);
+                System.IO.File.WriteAllText(mdname, mdjsonstr);
+                log.Log("write:" + mdname);
+                bSucc = true;
+            }
+            catch (Exception err)
+            {
+                log.Log("Write md Error:" + err.ToString());
+                return;
+            }
+
+            try
+            {
                 string abiname = onlyname + ".abi.json";
 
                 System.IO.File.Delete(abiname);
-                System.IO.File.WriteAllText(abiname, jsonstr);
+                System.IO.File.WriteAllText(abiname, abijsonstr);
                 log.Log("write:" + abiname);
                 bSucc = true;
             }
@@ -192,6 +221,7 @@ namespace Neo.Compiler
                 log.Log("Write abi Error:" + err.ToString());
                 return;
             }
+
             try
             {
                 fs.Dispose();
