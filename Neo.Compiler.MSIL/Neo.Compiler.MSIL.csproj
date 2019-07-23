@@ -5,7 +5,7 @@
     <AssemblyTitle>Neo.Compiler.MSIL</AssemblyTitle>
     <Version>2.4.1.1$(VersionSuffix)</Version>
     <Authors>The Neo Project</Authors>
-    <TargetFrameworks>netcoreapp2.2</TargetFrameworks>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <OutputType>Exe</OutputType>
     <AssemblyName>neon</AssemblyName>
     <PackageId>Neo.Compiler.MSIL</PackageId>
