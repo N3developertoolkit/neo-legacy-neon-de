@@ -101,6 +101,7 @@ namespace Neo.Compiler
             byte[] bytes;
             bool bSucc;
             string jsonstr = null;
+            string debugstr = null;
             //convert and build
             try
             {
@@ -114,6 +115,18 @@ namespace Neo.Compiler
                 bytes = am.Build();
                 log.Log("convert succ");
 
+                try
+                {
+                    var outjson = DebugExport.Export(am);
+                    StringBuilder sb = new StringBuilder();
+                    outjson.ConvertToStringWithFormat(sb, 0);
+                    debugstr = sb.ToString();
+                    log.Log("gen debug succ");
+                }
+                catch (Exception err)
+                {
+                    log.Log("gen debug Error:" + err.ToString());
+                }
 
                 try
                 {
@@ -150,9 +163,23 @@ namespace Neo.Compiler
                 log.Log("Write Bytes Error:" + err.ToString());
                 return;
             }
+
             try
             {
+                string debugname = onlyname + ".debug.json";
+                File.Delete(debugname);
+                File.WriteAllText(debugname, debugstr);
+                log.Log("write:" + debugname);
+                bSucc = true;
+            }
+            catch (Exception err)
+            {
+                log.Log("Write debug Error:" + err.ToString());
+                return;
+            }
 
+            try
+            {
                 string abiname = onlyname + ".abi.json";
 
                 System.IO.File.Delete(abiname);

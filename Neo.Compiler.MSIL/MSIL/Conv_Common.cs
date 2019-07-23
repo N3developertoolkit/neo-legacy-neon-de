@@ -76,6 +76,7 @@ namespace Neo.Compiler.MSIL
                 addrconv[src.addr] = addr;
                 _code.debugcode = src.debugcode;
                 _code.debugline = src.debugline;
+                _code.sequencePoint = src.sequencePoint;
                 _code.debugILAddr = src.addr;
                 _code.debugILCode = src.code.ToString();
             }
