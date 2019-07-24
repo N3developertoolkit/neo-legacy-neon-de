@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using vmtool;
 
 namespace Neo.Compiler
 {
@@ -55,12 +56,12 @@ namespace Neo.Compiler
                 {
                     var paramJson = new MyJson.JsonNode_Object();
                     paramJson.SetDictValue("name", param.name);
-                    paramJson.SetDictValue("type", param.type);
+                    paramJson.SetDictValue("type", FuncExport.ConvType(param.type));
                     paramsJson.Add(paramJson);
                 }
                 methodJson.SetDictValue("parameters", paramsJson);
 
-                methodJson.SetDictValue("return-type", method.returntype);
+                methodJson.SetDictValue("return-type", FuncExport.ConvType(method.returntype));
 
                 var varaiablesJson = new MyJson.JsonNode_Array();
                 foreach (var variable in method.body_Variables)
