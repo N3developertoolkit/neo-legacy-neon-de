@@ -8,7 +8,7 @@ namespace vmtool
 {
     public class FuncExport
     {
-        static string ConvType(string _type)
+        public static string ConvType(string _type)
         {
             switch (_type)
             {
