@@ -57,7 +57,7 @@ namespace vmtool
                 case "System.Object":
                     return "ByteArray";
             }
-            if (_type.Contains("[]"))
+            if (_type != null && _type.Contains("[]"))
                 return "Array";
 
             return "Unknown:" + _type;
