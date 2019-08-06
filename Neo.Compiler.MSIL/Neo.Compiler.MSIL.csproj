@@ -7,17 +7,17 @@
     <Authors>The Neo Project</Authors>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <OutputType>Exe</OutputType>
-    <AssemblyName>neon</AssemblyName>
-    <PackageId>Neo.Compiler.MSIL</PackageId>
+    <AssemblyName>neon-de</AssemblyName>
+    <PackageId>neon-de</PackageId>
     <PackageTags>NEO;Blockchain;Smart Contract;Compiler</PackageTags>
-    <PackageProjectUrl>https://github.com/neo-project/neo-devpack-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/devhawk/neo-devpack-dotnet</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/neo-project/neo-devpack-dotnet.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/devhawk/neo-devpack-dotnet.git</RepositoryUrl>
     <RootNamespace>Neo.Compiler</RootNamespace>
     <Company>The Neo Project</Company>
     <Product>Neo.Compiler.MSIL</Product>
-    <Description>Neo.Compiler.MSIL</Description>
+    <Description>This is a fork of the official Neo.Compiler.MSIL compiler with debugger enhancements.</Description>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackAsTool>true</PackAsTool>
   </PropertyGroup>
