@@ -68,7 +68,7 @@ namespace Neo.Compiler
                 {
                     var variableJson = new MyJson.JsonNode_Object();
                     variableJson.SetDictValue("name", variable.name);
-                    variableJson.SetDictValue("type", variable.type);
+                    variableJson.SetDictValue("type", FuncExport.ConvType(variable.type));
                     varaiablesJson.Add(variableJson);
                 }
                 methodJson.SetDictValue("variables", varaiablesJson);
