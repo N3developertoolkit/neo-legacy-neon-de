@@ -40,6 +40,14 @@ namespace Neo.Compiler
 
         static MyJson.JsonNode_Array GetMethods(NeoModule module)
         {
+            string ConvertType(string type)
+            {
+                if (type == "System.Object")
+                    return string.Empty;
+
+                return FuncExport.ConvType(type);
+            }
+
             var outjson = new MyJson.JsonNode_Array();
 
             foreach (var method in module.mapMethods.Values)
@@ -56,19 +64,19 @@ namespace Neo.Compiler
                 {
                     var paramJson = new MyJson.JsonNode_Object();
                     paramJson.SetDictValue("name", param.name);
-                    paramJson.SetDictValue("type", FuncExport.ConvType(param.type));
+                    paramJson.SetDictValue("type", ConvertType(param.type));
                     paramsJson.Add(paramJson);
                 }
                 methodJson.SetDictValue("parameters", paramsJson);
 
-                methodJson.SetDictValue("return-type", FuncExport.ConvType(method.returntype));
+                methodJson.SetDictValue("return-type", ConvertType(method.returntype));
 
                 var varaiablesJson = new MyJson.JsonNode_Array();
                 foreach (var variable in method.body_Variables)
                 {
                     var variableJson = new MyJson.JsonNode_Object();
                     variableJson.SetDictValue("name", variable.name);
-                    variableJson.SetDictValue("type", FuncExport.ConvType(variable.type));
+                    variableJson.SetDictValue("type", ConvertType(variable.type));
                     varaiablesJson.Add(variableJson);
                 }
                 methodJson.SetDictValue("variables", varaiablesJson);
