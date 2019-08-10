@@ -129,18 +129,18 @@ namespace Neo.Compiler
                     log.Log("gen debug Error:" + err.ToString());
                 }
 
-                try
-                {
-                    var outjson = MetadataExport.Export(mod);
-                    StringBuilder sb = new StringBuilder();
-                    outjson.ConvertToStringWithFormat(sb, 0);
-                    mdjsonstr = sb.ToString();
-                    log.Log("gen md succ");
-                }
-                catch (Exception err)
-                {
-                    log.Log("gen md Error:" + err.ToString());
-                }
+                // try
+                // {
+                //     var outjson = MetadataExport.Export(mod);
+                //     StringBuilder sb = new StringBuilder();
+                //     outjson.ConvertToStringWithFormat(sb, 0);
+                //     mdjsonstr = sb.ToString();
+                //     log.Log("gen md succ");
+                // }
+                // catch (Exception err)
+                // {
+                //     log.Log("gen md Error:" + err.ToString());
+                // }
 
                 try
                 {
@@ -192,20 +192,20 @@ namespace Neo.Compiler
                 return;
             }
 
-            try
-            {
-                string mdname = onlyname + ".md.json";
+            // try
+            // {
+            //     string mdname = onlyname + ".md.json";
 
-                System.IO.File.Delete(mdname);
-                System.IO.File.WriteAllText(mdname, mdjsonstr);
-                log.Log("write:" + mdname);
-                bSucc = true;
-            }
-            catch (Exception err)
-            {
-                log.Log("Write md Error:" + err.ToString());
-                return;
-            }
+            //     System.IO.File.Delete(mdname);
+            //     System.IO.File.WriteAllText(mdname, mdjsonstr);
+            //     log.Log("write:" + mdname);
+            //     bSucc = true;
+            // }
+            // catch (Exception err)
+            // {
+            //     log.Log("Write md Error:" + err.ToString());
+            //     return;
+            // }
 
             try
             {
