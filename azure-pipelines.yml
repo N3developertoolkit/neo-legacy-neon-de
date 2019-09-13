@@ -10,7 +10,7 @@ steps:
   inputs:
     command: 'custom'
     custom: pack
-    arguments: '.\Neo.Compiler.MSIL\Neo.Compiler.MSIL.csproj --version-suffix preview-$(Build.BuildNumber) -c $(configuration) -o $(Build.ArtifactStagingDirectory) --include-symbols'
+    arguments: './Neo.Compiler.MSIL/Neo.Compiler.MSIL.csproj -c $(configuration) -o $(Build.ArtifactStagingDirectory) --include-symbols'
 
 - task: PublishBuildArtifacts@1
   displayName: 'publish build artifacts'
