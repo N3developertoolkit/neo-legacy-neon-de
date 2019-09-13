@@ -8,7 +8,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <OutputType>Exe</OutputType>
     <AssemblyName>neon-de</AssemblyName>
-    <PackageId>neon-de</PackageId>
+    <PackageId>Neo.neon-de</PackageId>
     <PackageTags>NEO;Blockchain;Smart Contract;Compiler</PackageTags>
     <PackageProjectUrl>https://github.com/devhawk/neo-devpack-dotnet</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
