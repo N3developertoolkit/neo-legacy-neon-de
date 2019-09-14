@@ -1,25 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Copyright>2015-2019 The Neo Project</Copyright>
-    <AssemblyTitle>Neo.Compiler.MSIL</AssemblyTitle>
-    <VersionPrefix>2.4.1.1</VersionPrefix>
-    <Authors>The Neo Project</Authors>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-    <OutputType>Exe</OutputType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AssemblyName>neon-de</AssemblyName>
+    <AssemblyTitle>Neo.Compiler.MSIL</AssemblyTitle>
+    <Authors>The Neo Project</Authors>
+    <Company>The Neo Project</Company>
+    <Copyright>2015-2019 The Neo Project</Copyright>
+    <Description>This is a fork of the official Neo.Compiler.MSIL compiler with debugger enhancements.</Description>
+    <OutputType>Exe</OutputType>
+    <PackageIconUrl>https://neo-cdn.azureedge.net/images/neo-logo/72.png</PackageIconUrl>
     <PackageId>Neo.neon-de</PackageId>
-    <PackageTags>NEO;Blockchain;Smart Contract;Compiler</PackageTags>
-    <PackageProjectUrl>https://github.com/devhawk/neo-devpack-dotnet</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/devhawk/neo-devpack-dotnet</PackageProjectUrl>
+    <PackageTags>NEO;Blockchain;Smart Contract;Compiler</PackageTags>
+    <PackAsTool>true</PackAsTool>
+    <Product>Neo.Compiler.MSIL</Product>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/devhawk/neo-devpack-dotnet.git</RepositoryUrl>
     <RootNamespace>Neo.Compiler</RootNamespace>
-    <Company>The Neo Project</Company>
-    <Product>Neo.Compiler.MSIL</Product>
-    <Description>This is a fork of the official Neo.Compiler.MSIL compiler with debugger enhancements.</Description>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PackAsTool>true</PackAsTool>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <VersionPrefix>2.4.1.1</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
