@@ -9,7 +9,7 @@
     <Copyright>2015-2019 The Neo Project</Copyright>
     <Description>This is a fork of the official Neo.Compiler.MSIL compiler with debugger enhancements.</Description>
     <OutputType>Exe</OutputType>
-    <PackageIconUrl>https://neo-cdn.azureedge.net/images/neo-logo/72.png</PackageIconUrl>
+    <PackageIcon>neo-logo-72.png</PackageIcon>
     <PackageId>Neo.neon-de</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/devhawk/neo-devpack-dotnet</PackageProjectUrl>
@@ -20,8 +20,11 @@
     <RepositoryUrl>https://github.com/devhawk/neo-devpack-dotnet.git</RepositoryUrl>
     <RootNamespace>Neo.Compiler</RootNamespace>
     <TargetFramework>netcoreapp2.2</TargetFramework>
-    <VersionPrefix>2.4.1.1</VersionPrefix>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="neo-logo-72.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Mono.Cecil" Version="0.10.3" />
