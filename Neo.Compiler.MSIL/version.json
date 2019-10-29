@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/AArnott/Nerdbank.GitVersioning/master/src/NerdBank.GitVersioning/version.schema.json",
+  "version": "2.5-preview",
+  "publicReleaseRefSpec": [
+    "^refs/heads/devhawk/neon-de$",
+    "^refs/heads/neon-de-release/v\\d+(?:\\.\\d+)?$"
+  ],
+  "cloudBuild": {
+    "buildNumber": {
+      "enabled": true
+    }
+  },
+  "release": {
+    "branchName": "neon-de-release/v{version}",
+    "firstUnstableTag": "preview"
+  }
+}
