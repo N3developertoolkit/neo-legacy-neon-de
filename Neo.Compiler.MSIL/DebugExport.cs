@@ -38,15 +38,30 @@ namespace Neo.Compiler
             return outjson;
         }
 
+        static string ConvertType(string type)
+        {
+            if (type == "System.Object")
+                return string.Empty;
+
+            return FuncExport.ConvType(type);
+        }
+
+        static MyJson.JsonNode_Array GetParameters(IList<NeoParam> @params)
+        {
+            var paramsJson = new MyJson.JsonNode_Array();
+            foreach (var param in @params)
+            {
+                var paramJson = new MyJson.JsonNode_Object();
+                paramJson.SetDictValue("name", param.name);
+                paramJson.SetDictValue("type", ConvertType(param.type));
+                paramsJson.Add(paramJson);
+            }
+
+            return paramsJson;
+        }
+
         static MyJson.JsonNode_Array GetMethods(NeoModule module)
         {
-            string ConvertType(string type)
-            {
-                if (type == "System.Object")
-                    return string.Empty;
-
-                return FuncExport.ConvType(type);
-            }
 
             var outjson = new MyJson.JsonNode_Array();
 
@@ -58,17 +73,7 @@ namespace Neo.Compiler
                 methodJson.SetDictValue("display-name", method.displayName);
                 methodJson.SetDictValue("start-address", method.body_Codes.Values.First().addr);
                 methodJson.SetDictValue("end-address", method.body_Codes.Values.Last().addr);
-
-                var paramsJson = new MyJson.JsonNode_Array();
-                foreach (var param in method.paramtypes)
-                {
-                    var paramJson = new MyJson.JsonNode_Object();
-                    paramJson.SetDictValue("name", param.name);
-                    paramJson.SetDictValue("type", ConvertType(param.type));
-                    paramsJson.Add(paramJson);
-                }
-                methodJson.SetDictValue("parameters", paramsJson);
-
+                methodJson.SetDictValue("parameters", GetParameters(method.paramtypes));
                 methodJson.SetDictValue("return-type", ConvertType(method.returntype));
 
                 var varaiablesJson = new MyJson.JsonNode_Array();
@@ -87,11 +92,28 @@ namespace Neo.Compiler
             return outjson;
         }
 
+        static MyJson.JsonNode_Array GetEvents(NeoModule module)
+        {
+            var outjson = new MyJson.JsonNode_Array();
+            foreach (var @event in module.mapEvents.Values)
+            {
+                var eventJson = new MyJson.JsonNode_Object();
+                eventJson.SetDictValue("namespace", @event._namespace);
+                eventJson.SetDictValue("name", @event.name);
+                eventJson.SetDictValue("display-name", @event.displayName);
+                eventJson.SetDictValue("parameters", GetParameters(@event.paramtypes));
+                eventJson.SetDictValue("return-type", ConvertType(@event.returntype));
+                outjson.Add(eventJson);
+            }
+            return outjson;
+        }
+
         public static MyJson.JsonNode_Object Export(NeoModule am)
         {
             var outjson = new MyJson.JsonNode_Object();
             outjson.SetDictValue("entrypoint", am.mainMethod);
             outjson.SetDictValue("methods", GetMethods(am));
+            outjson.SetDictValue("events", GetEvents(am));
             outjson.SetDictValue("sequence-points", GetSequencePoints(am));
             return outjson;
         }

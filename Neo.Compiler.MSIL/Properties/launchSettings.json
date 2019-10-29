@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Neo.Compiler.MSIL": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\harry\\Source\\neo\\seattle\\contracts\\helloWorld\\bin\\Debug\\net472\\helloWorld.dll"
+    }
+  }
+}
