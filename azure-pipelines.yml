@@ -6,14 +6,21 @@ pool:
 
 steps:
 - task: DotNetCoreCLI@2
-  displayName: 'dotnet pack'
   inputs:
-    command: 'custom'
-    custom: pack
-    arguments: './Neo.Compiler.MSIL/Neo.Compiler.MSIL.csproj -c $(configuration) -o $(Build.ArtifactStagingDirectory) --include-symbols'
+    command: 'pack'
+    packagesToPack: './Neo.Compiler.MSIL/*.csproj'
+    includesymbols: true
+    versioningScheme: 'off'
 
 - task: PublishBuildArtifacts@1
   displayName: 'publish build artifacts'
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: 'nuget package'
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '4b2bd186-f7a1-4f00-a22c-521ae5c47cd7/fc59ee4d-b5ed-4a8d-9520-240cd3712671'
