@@ -4,6 +4,16 @@ variables:
 pool:
   vmImage: 'windows-2019'
 
+trigger:
+  batch: false
+  branches:
+    include:
+    - master-de
+  paths:
+    include:
+    - 'Neo.Compiler.MSIL/*'
+    - 'Neo.Compiler.MSIL.UnitTests/*'
+
 steps:
 - task: DotNetCoreCLI@2
   inputs:
