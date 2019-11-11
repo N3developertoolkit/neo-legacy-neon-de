@@ -9,6 +9,7 @@ trigger:
   branches:
     include:
     - master-de
+    - release-de/*
   paths:
     include:
     - 'Neo.Compiler.MSIL/*'
