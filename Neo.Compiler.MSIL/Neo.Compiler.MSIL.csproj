@@ -19,8 +19,8 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/devhawk/neo-devpack-dotnet.git</RepositoryUrl>
     <RootNamespace>Neo.Compiler</RootNamespace>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>	
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
