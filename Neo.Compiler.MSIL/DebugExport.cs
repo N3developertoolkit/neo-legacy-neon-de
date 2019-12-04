@@ -102,7 +102,7 @@ namespace Neo.Compiler
                 eventJson.SetDictValue("name", @event.name);
                 eventJson.SetDictValue("display-name", @event.displayName);
                 eventJson.SetDictValue("parameters", GetParameters(@event.paramtypes));
-                eventJson.SetDictValue("return-type", ConvertType(@event.returntype));
+                eventJson.SetDictValue("return-type", "Void");
                 outjson.Add(eventJson);
             }
             return outjson;

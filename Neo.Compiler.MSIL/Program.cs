@@ -102,7 +102,7 @@ namespace Neo.Compiler
             bool bSucc;
             string abijsonstr = null;
             string debugstr = null;
-            string mdjsonstr = null;
+            // string mdjsonstr = null;
             //convert and build
             try
             {
